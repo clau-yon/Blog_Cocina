@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+/* styles.css */
+
+.navbar {
+    display: flex;
+    justify-content:space-around;
+    align-items: center; /* Alinear verticalmente al centro */
+    background-color: rgb(235,97,97); /* Color de fondo de la barra de navegación */
+    margin-bottom: 40px;
+}
+
+.navbar a {
+    color: white; /* Color del texto de los enlaces */
+    text-decoration: none; /* Eliminar subrayado en los enlaces */
+    margin-left: 10px; /* Margen izquierdo para separar los enlaces */
+    padding: 5px; /* Relleno para dar espacio alrededor del texto */
+    box-sizing: border-box; /* Modelo de caja border-box */
+    padding-left: 30px;
+}
+
+.navbar h1 {
+    color: white; /* Color del texto del nombre del sitio */
+    margin: 0;
+    margin-right: 10px; /* Margen derecho para separar el nombre del sitio de los enlaces */
+}
+
+
+/*INICIA EL BODY*/
+/* styles.css */
+.container {
+    display: flex; /* Utilizar un modelo de caja flexible para dividir la página en dos columnas */
+}
+
+.posts {
+    flex: 2; /* La columna de los posts tomará dos partes del espacio */
+    background-color: #f0f0f0; /* Color de fondo para la columna de los posts (puedes personalizarlo) */
+    padding: 20px; /* Espaciado interior para los posts (puedes ajustarlo) */
+}
+
+.sidebar {
+    flex: 1; /* La columna de la barra lateral tomará una parte del espacio */
+    background-color: #333; /* Color de fondo para la barra lateral (puedes personalizarlo) */
+    color: white; /* Color de texto para la barra lateral */
+    padding: 20px; /* Espaciado interior para la barra lateral (puedes ajustarlo) */
+}
+
+
+.cards{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    border: #333;
+    border: 1px solid;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container{
+    
+    background-color: rgb(240,240,240);
+    
+
+}
+
+
+
+/*LOGIN*/
+.login, .register {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 20px;
+    background-color: #e9e6e6f3;
+    width: 30vw;
+    height: 50vh;
+    border: 1.5px solid black;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto; /* Para centrar horizontalmente */
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sections{
+    border: 2px solid green;
+    margin-bottom: 10px;
+    width: 80%;
+    margin-top: 30px;
+}
+
+/*REGISTER*/
