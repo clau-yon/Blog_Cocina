@@ -34,16 +34,16 @@
 }
 
 .posts {
-    flex: 2; /* La columna de los posts tomará dos partes del espacio */
-    background-color: #f0f0f0; /* Color de fondo para la columna de los posts (puedes personalizarlo) */
-    padding: 20px; /* Espaciado interior para los posts (puedes ajustarlo) */
+    flex: 2;
+    background-color: #f0f0f0; 
+    padding: 20px; 
 }
 
 .sidebar {
-    flex: 1; /* La columna de la barra lateral tomará una parte del espacio */
-    background-color: #333; /* Color de fondo para la barra lateral (puedes personalizarlo) */
-    color: white; /* Color de texto para la barra lateral */
-    padding: 20px; /* Espaciado interior para la barra lateral (puedes ajustarlo) */
+    flex: 1; 
+    background-color: #333; 
+    color: white; 
+    padding: 20px; 
 }
 
 
@@ -87,7 +87,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin: 0 auto; /* Para centrar horizontalmente */
+    margin: 0 auto; 
 }
 form{
     display: flex;
@@ -100,5 +100,3 @@ form{
     width: 80%;
     margin-top: 30px;
 }
-
-/*REGISTER*/
