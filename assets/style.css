@@ -33,8 +33,12 @@
 
 .posts {
     flex: 2;
-    background-color: #f0f0f0; 
+    background-color: rgb(240,240,240);
     padding: 20px; 
+    border-radius: 10px;
+    border: 2px solid blue;
+    margin-top: 20px;
+    margin-right: 40px;
 }
 
 
@@ -59,7 +63,7 @@
 
 .container{
     
-    background-color: rgb(240,240,240);
+    background-color: rgb(137, 118, 118);
     
 
 }

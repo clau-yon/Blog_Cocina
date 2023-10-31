@@ -1,6 +1,7 @@
 <?php
+include "./config/database.php";
 session_start();
-$welcomeMessage = "Bienvenido"; // Un saludo
+$welcomeMessage = "Bienvenido";
 $showUserPanel = false;
 
 if (isset($_SESSION['username'])) {
@@ -10,13 +11,18 @@ if (isset($_SESSION['username'])) {
 
 // Procesar el cierre de sesión
 if (isset($_GET['logout'])) {
-    // SALIR
+    // CERRAR SESIÓN
     session_unset();
     session_destroy();
-    // INDEX
+    // REDIRIGIR AL INDEX
     header('Location: index.php');
     exit;
 }
+
+// Realizar una consulta para obtener los posts
+$sql = "SELECT * FROM posts";
+$result = mysqli_query($conn, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -76,9 +82,14 @@ if (isset($_GET['logout'])) {
 </div>
 
       <div class="container">
-        <div class="posts">
-            <!-- Contenido publicaciones  -->
-        </div>
+      <?php
+        echo '<div class="posts">';
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<h2>" . $row['title'] . "</h2>";
+            echo "<p>" . $row['content'] . "</p>";
+        }
+        echo '</div>';
+        ?>
         <div class="sidebar">
         <?php if ($showUserPanel): ?>
           <div class="user">

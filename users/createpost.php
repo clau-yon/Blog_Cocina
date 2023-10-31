@@ -33,11 +33,11 @@ if (isset($_POST["create_post"])) {
     
     if ($showUserPanel && $userId !== null) {
         // Inserta el post con el ID del usuario autenticado
-        //TRABAJAR CON AGREGAR DETALLES
+        //FALTA DETALLES
         $sql = "INSERT INTO posts (title, content, author_id) VALUES ('$title', '$content', $userId)";
         if (mysqli_query($conn, $sql)) {
             $_SESSION['message'] = "<div class='alert alert-success'>Post creado exitosamente</div>";
-            header("Location: user_post.php");
+            header("Location: ../index.php"); // Redirige al índice
             exit;
         } else {
             $_SESSION['message'] = "<div class='alert alert-danger'>No se pudo crear el post</div>";
