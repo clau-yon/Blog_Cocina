@@ -1,57 +1,49 @@
 <?php
 include "../config/database.php";
-
 session_start();
 
-if (isset($_SESSION['email'])) {
-    $email = $_SESSION['email'];
-    $query = "SELECT * FROM users WHERE email='$email'";
-    $result = mysqli_query($conn, $query);
-
-    if ($result) {
-        while ($row = mysqli_fetch_object($result)) {
-            $username = $row->username;
-        }
-    } else {
-        echo "Error en la consulta: " . mysqli_error($conn);
-    }
+// Comprobar si userhome.php no se ha incluido previamente
+if (!function_exists('obtenerIdDelUsuario')) {
+    include "userhome.php";
 }
 
-if (isset($_POST['create_post'])) {
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    
-    // Verifica si hay una sesión de usuario activa
-    if (isset($_SESSION['email'])) {
-        $email = $_SESSION['email'];
-        $query = "SELECT * FROM users WHERE email='$email'";
-        $result = mysqli_query($conn, $query);
+if (isset($_SESSION['username'])) {
+    $showUserPanel = true;
+    // Obten el ID del usuario autenticado
+    $userId = obtenerIdDelUsuario($conn); 
+}
 
-        if ($result) {
-            while ($row = mysqli_fetch_object($result)) {
-                $author_id = $row->id;
-            }
-            
-            // Inserta el post en la tabla
-            $insertQuery = "INSERT INTO posts (title, content, author_id) VALUES ('$title', '$content', $author_id)";
-            
-            if (mysqli_query($conn, $insertQuery)) {
-                echo "Post creado correctamente.";
-            } else {
-                echo "Error al crear el post: " . mysqli_error($conn);
-            }
+if (isset($_GET['logout']) && $_GET['logout'] == 1) {
+    // CERRAR SESION
+    session_destroy();
+    header("Location: ../index.php"); 
+    exit;
+}
+
+if (isset($_POST["create_post"])) {
+    $title = $_POST["title"];
+    $content = $_POST["content"];
+    // LOS POST DEVUELVE ROOT COMO AUTOR VOLVER A REVISAR
+    $sql = "INSERT INTO posts (title, content, author_id) VALUES ('$title', '$content', $userId)";
+    mysqli_query($conn, $sql);
+}
+if (isset($_POST["create_post"])) {
+    $title = $_POST["title"];
+    $content = $_POST["content"];
+    
+    if ($showUserPanel && $userId !== null) {
+        // Inserta el post con el ID del usuario autenticado
+        //TRABAJAR CON AGREGAR DETALLES
+        $sql = "INSERT INTO posts (title, content, author_id) VALUES ('$title', '$content', $userId)";
+        if (mysqli_query($conn, $sql)) {
+            $_SESSION['message'] = "<div class='alert alert-success'>Post creado exitosamente</div>";
+            header("Location: user_post.php");
+            exit;
         } else {
-            echo "Error en la consulta de autor: " . mysqli_error($conn);
+            $_SESSION['message'] = "<div class='alert alert-danger'>No se pudo crear el post</div>";
         }
     } else {
-        // No hay una sesión de usuario activa, por lo que se crea un post con author_id nulo
-        $insertQuery = "INSERT INTO posts (title, content, author_id) VALUES ('$title', '$content', null)";
-        
-        if (mysqli_query($conn, $insertQuery)) {
-            echo "Post creado correctamente por un usuario anónimo.";
-        } else {
-            echo "Error al crear el post: " . mysqli_error($conn);
-        }
+        die("No se pudo obtener el ID del usuario o el usuario no está autenticado.");
     }
 }
 ?>
@@ -65,6 +57,24 @@ if (isset($_POST['create_post'])) {
 </head>
 <body>
     <h1>Crear un Post</h1>
+    <a href="./user_post.php">Volver</a>
+    <?php
+        if ($showUserPanel) {
+            echo '<p>Bienvenido, ' . $_SESSION['username'] . '!</p>';
+            echo '<a href="?logout=1"><i class="fa-solid fa-sign-out"></i> Cerrar Sesión</a>';
+        } else {
+            echo '<a href="./login.php"><i class="fa-regular fa-user"></i> Login</a>';
+        }
+    ?>
+    <a href="../index.php">Home</a>
+    <a href="./createpost.php">Crear un Post</a>
+    <?php
+    if ($showUserPanel) {
+        echo '<a href="?logout=1"><i class="fa-solid fa-sign-out"></i> Cerrar Sesión</a>';
+    } else {
+        echo '<a href="./login.php"><i class="fa-regular fa-user"></i> Login</a>';
+    }
+    ?>
     <form action="./createpost.php" method="POST">
         <label>Titulo</label>
         <input type="text" name="title">

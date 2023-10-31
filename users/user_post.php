@@ -28,7 +28,8 @@
 <body>
     <h1>ALL Post</h1>
     <hr></hr>
-
+    <a href="./createpost.php">Crear post</a>
+    <a href="./userhome.php">Panel</a>
     <?php
         $getuserpost=mysqli_query($conn, "SELECT * from posts");
         while ($row1=mysqli_fetch_array($getuserpost)) {
@@ -46,3 +47,5 @@
     ?>
 </body>
 </html>
+
+
