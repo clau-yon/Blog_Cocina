@@ -1,3 +1,12 @@
+<?php
+session_start();
+$welcomeMessage = "Bienvenido"; // Mensaje predeterminado
+
+if (isset($_SESSION['username'])) {
+    $welcomeMessage = "Bienvenido, " . $_SESSION['username'] . "!";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -49,19 +58,10 @@
             <div class="user">
                 <img>
                 <p>Name</p>
+                <p><?php echo $welcomeMessage; ?></p>
             </div>
         </div>
     </div>
-
-    <!-- Resto de tu contenido HTML -->
-
-    <script>
-        // Inicializa el carrusel
-        $(document).ready(function () {
-            $('#carouselExampleControls').carousel();
-        });
-    </script>
-
 
     </body>
     </html>

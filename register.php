@@ -24,8 +24,8 @@ if (isset($_POST["submit"])) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         array_push($errors, "Email no es válido");
     }
-    if (strlen($password) < 8) {
-        array_push($errors, "La contraseña debe tener al menos 8 caracteres");
+    if (strlen($_POST["password"]) < 8 || !preg_match("/[0-9]/", $_POST["password"])){
+        array_push($errors, "La contraseña debe tener al menos 8 caracteres y contener al menos un número");
     }
     require_once "./config/database.php";
     $sql = "SELECT * FROM users WHERE email = '$email'";
@@ -73,6 +73,7 @@ if (isset($_POST["submit"])) {
     </div>
     <input type="submit" name="submit" value="Registrarse">
 </form>
+<p>¿No tienes una cuenta? <a href="login.php">Ya posee una cuenta?</a></p>
 </div>
 </body>
 </html>
