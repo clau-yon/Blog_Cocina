@@ -71,7 +71,7 @@ if (isset($_POST["submit"])) {
         <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password" ><br>
     </div>
-    <input type="submit" name="submit" value="Registrarse">
+    <input class="iclog" type="submit" name="submit" value="Registrarse">
 </form>
 <p>¿No tienes una cuenta? <a href="login.php">Ya posee una cuenta?</a></p>
 </div>

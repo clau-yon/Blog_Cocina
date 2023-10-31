@@ -1,32 +1,58 @@
 <?php
 session_start();
-$welcomeMessage = "Bienvenido"; // Mensaje predeterminado
+$welcomeMessage = "Bienvenido"; // Un saludo
+$showUserPanel = false;
 
 if (isset($_SESSION['username'])) {
-    $welcomeMessage = "Bienvenido, " . $_SESSION['username'] . "!";
+    $welcomeMessage = "¡Bienvenido, " . $_SESSION['username'] . "!";
+    $showUserPanel = true;
+}
+
+// Procesar el cierre de sesión
+if (isset($_GET['logout'])) {
+    // SALIR
+    session_unset();
+    session_destroy();
+    // INDEX
+    header('Location: index.php');
+    exit;
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-          <title>Name Blog</title>
-          <link rel="stylesheet" type="text/css" href="./assets/style.css">
+          <title>Chefs en Casa</title>
           <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
           <script src="https://kit.fontawesome.com/6e316b87b7.js" crossorigin="anonymous"></script>
+          <link rel="stylesheet" type="text/css" href="./assets/style.css">
     </head>
-  <!--  <body>
-    
-    <div class="navbar">
-        <h1>Name Blog</h1>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="contact.html">Login</a>
-    </div>-->
-<?php include('./components/header.php'); ?>    
-    <!-- INICIO DEL CARROSEL -->
+<body>
+ 
+<header >
+  <div class="navbar">  
+    <h1>Chefs en Casa</h1>
+
+    <ul>
+      <li><a href="index.php">Inicio</a></li>
+      <li><a href="about.html">Acerca</a></li>
+      <li><a href="contact.html">Contactanos</a></li>
+      <li>
+          <?php
+               if ($showUserPanel) {
+                  echo '<a href="?logout=1"><i class="fa-solid fa-sign-out"></i> Cerrar Sesión</a>';
+              } else {
+                  echo '<a href="./login.php"><i class="fa-regular fa-user"></i> Login</a>';
+              }
+          ?>
+      </li>
+    </ul>
+    </div>
+</header>
+
+      
+
     <div class="cards">
       <div class="card" style="width: 18rem;">
         <img src="./assets/images/car01.jpg" width="50%"  class="card-img-top" alt="...">
@@ -48,17 +74,30 @@ if (isset($_SESSION['username'])) {
       </div>
   
 </div>
-<!--FIN-->
 
       <div class="container">
         <div class="posts">
             <!-- Contenido publicaciones  -->
         </div>
         <div class="sidebar">
-            <div class="user">
-                <img>
-                <p>Name</p>
-                <p><?php echo $welcomeMessage; ?></p>
+        <?php if ($showUserPanel): ?>
+          <div class="user">
+              <img src="./assets/images/login.jpg" width="20%">
+              <p><?php echo $welcomeMessage; ?></p>
+              <a href="./users/userhome.php" class="btn btn-danger">Panel de Usuario</a>
+          </div>
+        <?php endif; ?>
+            <div class="search">
+                <input type="text" placeholder="Buscar...">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+
+            </div>
+            <div>
+                AQUI REDES SOCIALES
+            </div>
+
+            <div class="">
+                COSAS POPULARES
             </div>
         </div>
     </div>

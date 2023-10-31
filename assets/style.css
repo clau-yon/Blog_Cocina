@@ -1,31 +1,29 @@
 *{
     margin: 0;
-    padding: 0;
-    
+    padding: 0;  
 }
-
-
 .navbar {
     display: flex;
-    justify-content:space-around;
-    align-items: center; 
+    justify-content:space-between;
     background-color: rgb(235,97,97); 
     margin-bottom: 40px;
+   
 }
 
-.navbar a {
+.navbar ul a{
+    list-style-type: none;
+    flex-direction: column;
     color: white; 
     text-decoration: none;
-    margin-left: 10px; 
-    padding: 5px; 
-    box-sizing: border-box;
-    padding-left: 30px;
-}
-
+  }
+.navbar ul li {
+    display: inline;
+    padding: 20px;
+    
+}  
 .navbar h1 {
     color: white; 
-    margin: 0;
-    margin-right: 10px;
+   margin-left: 60px;
 }
 
 
@@ -34,16 +32,9 @@
 }
 
 .posts {
-    flex: 2; /* La columna de los posts tomará dos partes del espacio */
-    background-color: #f0f0f0; /* Color de fondo para la columna de los posts (puedes personalizarlo) */
-    padding: 20px; /* Espaciado interior para los posts (puedes ajustarlo) */
-}
-
-.sidebar {
-    flex: 1; /* La columna de la barra lateral tomará una parte del espacio */
-    background-color: #333; /* Color de fondo para la barra lateral (puedes personalizarlo) */
-    color: white; /* Color de texto para la barra lateral */
-    padding: 20px; /* Espaciado interior para la barra lateral (puedes ajustarlo) */
+    flex: 2;
+    background-color: #f0f0f0; 
+    padding: 20px; 
 }
 
 
@@ -87,7 +78,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin: 0 auto; /* Para centrar horizontalmente */
+    margin: 0 auto; 
 }
 form{
     display: flex;
@@ -100,5 +91,51 @@ form{
     width: 80%;
     margin-top: 30px;
 }
+.iclog{
+    background-color: rgb(235,97,97); 
+    border: 0;
+    padding: 7px 7px;
+    border-radius: 15px;
+}
+/*user*/
+.user{
+    border-radius: 20px;
+    width: 20vw;
+    background-color: #333; 
+    color: white; 
+    padding: 20px; 
+    display: flex;
+    border: 2px solid green;
+    flex-direction: column;
+    align-items: center;
+}
+.user p{
+    margin-top: 10px;
+    font-size: larger;
+    font-weight: bold;
+}
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 30px;
+    position: relative;
+}
 
-/*REGISTER*/
+.search input {
+    border: none; 
+    border-radius: 5px;
+    outline: none;
+    padding: 10px;
+}
+
+.search button {
+    background-color: rgb(235, 97, 97);
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none; /* Eliminar el borde */
+    border-radius: 5px 0;
+}
+.search button:hover{
+    background-color: rgb(157, 157, 157);
+}

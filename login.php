@@ -46,7 +46,7 @@
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" name="password" required><br>
             </div>
-            <input type="submit" name="submit" value="Iniciar Sesión">
+            <input class="iclog" type="submit" name="submit" value="Iniciar Sesión">
 
         </form>
         <p>¿No tienes una cuenta? <a href="register.php">Registrarse</a></p>
