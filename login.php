@@ -12,19 +12,42 @@
 
 
     <div class="login">
+        <?php
+            if (isset($_POST["submit"])) {
+                $email = $_POST["email"];
+                $password = $_POST["password"];
+                require_once "./config/database.php";
+                $sql = "SELECT * FROM users WHERE email = '$email'";
+                $result = mysqli_query($conn,$sql);
+                $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                if($user){
+                    if(password_verify($password, $user["password"])){
+                        session_start();
+                        $_SESSION['username'] = $user['username'];
+                        header("Location:index.php");   
+                        die();
+                    }else{
+                        echo "<div class='alert alert-danger'>Contaseña no coincide</div>";
+                    }
+                }else{
+                    echo "<div class='alert alert-danger'>Correo no coincide</div>";
+                }
+            }
+        ?>
         <form action="login.php" method="post">
             <div class="sections">
                 <img src="./assets/images/login.png" width="20%">
             </div>
             <div class="sections">
-                <label for="username">Nombre de Usuario:</label>
-                <input type="text" id="username" name="username" required><br>
+                <label for="email">Nombre de Usuario:</label>
+                <input type="text" id="email" name="email" required><br>
             </div>
             <div class="sections">
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" name="password" required><br>
             </div>
-            <input  type="submit" value="Iniciar Sesión">
+            <input class="iclog" type="submit" name="submit" value="Iniciar Sesión">
+
         </form>
         <p>¿No tienes una cuenta? <a href="register.php">Registrarse</a></p>
     </div>

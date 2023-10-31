@@ -1,12 +1,16 @@
+<header >
+  <div class="navbar">  
+    <h1>Chefs en Casa</h1>
 
-<div class="navbar">
-        <h1>Chefs en Casa</h1>
-        <div>
-          <a href="index.php">Home</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a href="login.php"><i class="fa-regular fa-user"></i></a>
-          <a href="contact.html"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i></a>
+    <ul>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    </div>
+</header>
+
+
         </div>
         
 </div>

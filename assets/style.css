@@ -1,31 +1,29 @@
 *{
     margin: 0;
-    padding: 0;
-    
+    padding: 0;  
 }
-
-
 .navbar {
     display: flex;
-    justify-content:space-around;
-    align-items: center; 
+    justify-content:space-between;
     background-color: rgb(235,97,97); 
     margin-bottom: 40px;
+   
 }
 
-.navbar a {
+.navbar ul a{
+    list-style-type: none;
+    flex-direction: column;
     color: white; 
     text-decoration: none;
-    margin-left: 10px; 
-    padding: 5px; 
-    box-sizing: border-box;
-    padding-left: 30px;
-}
-
+  }
+.navbar ul li {
+    display: inline;
+    padding: 20px;
+    
+}  
 .navbar h1 {
     color: white; 
-    margin: 0;
-    margin-right: 10px;
+   margin-left: 60px;
 }
 
 
@@ -35,6 +33,7 @@
 
 .posts {
     flex: 2;
+<<<<<<< HEAD
     background-color: #f0f0f0; 
     padding: 20px; 
 }
@@ -44,6 +43,14 @@
     background-color: #333; 
     color: white; 
     padding: 20px; 
+=======
+    background-color: rgb(240,240,240);
+    padding: 20px; 
+    border-radius: 10px;
+    border: 2px solid blue;
+    margin-top: 20px;
+    margin-right: 40px;
+>>>>>>> 9b301db87745f2c6509f06953475a77c6fc4e708
 }
 
 
@@ -68,7 +75,7 @@
 
 .container{
     
-    background-color: rgb(240,240,240);
+    background-color: rgb(137, 118, 118);
     
 
 }
@@ -100,3 +107,54 @@ form{
     width: 80%;
     margin-top: 30px;
 }
+<<<<<<< HEAD
+=======
+.iclog{
+    background-color: rgb(235,97,97); 
+    border: 0;
+    padding: 7px 7px;
+    border-radius: 15px;
+}
+/*user*/
+.user{
+    border-radius: 20px;
+    width: 20vw;
+    background-color: #333; 
+    color: white; 
+    padding: 20px; 
+    display: flex;
+    border: 2px solid green;
+    flex-direction: column;
+    align-items: center;
+}
+.user p{
+    margin-top: 10px;
+    font-size: larger;
+    font-weight: bold;
+}
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 30px;
+    position: relative;
+}
+
+.search input {
+    border: none; 
+    border-radius: 5px;
+    outline: none;
+    padding: 10px;
+}
+
+.search button {
+    background-color: rgb(235, 97, 97);
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none; /* Eliminar el borde */
+    border-radius: 5px 0;
+}
+.search button:hover{
+    background-color: rgb(157, 157, 157);
+}
+>>>>>>> 9b301db87745f2c6509f06953475a77c6fc4e708
