@@ -4,36 +4,33 @@
     
 }
 
-/* styles.css */
 
 .navbar {
     display: flex;
     justify-content:space-around;
-    align-items: center; /* Alinear verticalmente al centro */
-    background-color: rgb(235,97,97); /* Color de fondo de la barra de navegación */
+    align-items: center; 
+    background-color: rgb(235,97,97); 
     margin-bottom: 40px;
 }
 
 .navbar a {
-    color: white; /* Color del texto de los enlaces */
-    text-decoration: none; /* Eliminar subrayado en los enlaces */
-    margin-left: 10px; /* Margen izquierdo para separar los enlaces */
-    padding: 5px; /* Relleno para dar espacio alrededor del texto */
-    box-sizing: border-box; /* Modelo de caja border-box */
+    color: white; 
+    text-decoration: none;
+    margin-left: 10px; 
+    padding: 5px; 
+    box-sizing: border-box;
     padding-left: 30px;
 }
 
 .navbar h1 {
-    color: white; /* Color del texto del nombre del sitio */
+    color: white; 
     margin: 0;
-    margin-right: 10px; /* Margen derecho para separar el nombre del sitio de los enlaces */
+    margin-right: 10px;
 }
 
 
-/*INICIA EL BODY*/
-/* styles.css */
 .container {
-    display: flex; /* Utilizar un modelo de caja flexible para dividir la página en dos columnas */
+    display: flex;
 }
 
 .posts {
